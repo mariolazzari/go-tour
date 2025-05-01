@@ -514,3 +514,42 @@ func main() {
 	)
 }
 ```
+
+#### If and else
+
+Variables declared inside an if short statement are also available inside any of the else blocks.
+
+```go
+package main
+
+import (
+	"fmt"
+	"math"
+)
+
+func pow(x, n, lim float64) float64 {
+	if v := math.Pow(x, n); v < lim {
+		return v
+	} else {
+		fmt.Printf("%g >= %g\n", v, lim)
+	}
+	// can't use v here, though
+	return lim
+}
+
+func main() {
+	fmt.Println(
+		pow(3, 2, 10),
+		pow(3, 3, 20),
+	)
+}
+```
+
+#### Exercise: Loops and Functions
+
+let's implement a square root function: given a number x, we want to find the number z for which z² is most nearly x.
+
+Computers typically compute the square root of x using a loop. Starting with some guess z, we can adjust z based on how close z² is to x, producing a better guess:
+
+z -= (z*z - x) / (2*z)
+Repeating this adjustment makes the guess better and better until we reach an answer that is as close to the actual square root as can be.
