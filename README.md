@@ -90,8 +90,7 @@ func main() {
 
 ### Exported names
 
-In Go, a name is exported if it begins with a capital letter. For example, *Pizza* is an exported name, as is *Pi*, which is exported from the math package.
-*pizza* and *pi* do not start with a capital letter, so they are not exported.
+In Go, a name is exported if it begins with a capital letter: *Pi* is an exported name; *pi* does not start with a capital letter, so it is not exported.
 
 When importing a package, you can refer only to its exported names. Any "unexported" names are not accessible from outside the package.
 
@@ -104,6 +103,8 @@ import (
 )
 
 func main() {
-	fmt.Println(math.pi)
+	// fmt.Println(math.pi) -> unexported
+	fmt.Println(math.Pi)
 }
 ```
+
