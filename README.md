@@ -174,3 +174,37 @@ These names should be used to document the meaning of the return values.
 A return statement without arguments returns the named return values. This is known as a "naked" return.
 
 Naked return statements should be used only in short functions, as with the example shown here. They can harm readability in longer functions.
+
+```go
+package main
+
+import "fmt"
+
+func split(sum int) (x, y int) {
+	x = sum * 4 / 9
+	y = sum - x
+	return
+}
+
+func main() {
+	fmt.Println(split(17))
+}
+```
+
+### Variables
+
+The *var* statement declares a list of variables; as in function argument lists, the type is last.
+A var statement can be at package or function level.
+
+```go
+package main
+
+import "fmt"
+
+var c, python, java bool
+
+func main() {
+	var i int
+	fmt.Println(i, c, python, java)
+}
+```
