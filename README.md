@@ -48,3 +48,42 @@ func main() {
 	fmt.Println("The time is", time.Now())
 }
 ```
+
+## Basics
+
+### Packages
+
+Every Go program is made up of packages: programs start running in package main.
+This program is using the packages with import paths *fmt* and *math/rand"*.
+
+By convention, the package name is the same as the last element of the import path: the *math/rand* package comprises files that begin with the statement package *rand*.
+
+```go
+package main
+
+import (
+	"fmt"
+	"math/rand"
+)
+
+func main() {
+	fmt.Println("My favorite number is", rand.Intn(10))
+}
+```
+
+### Imports
+
+This code groups the imports into a parenthesized, *factored* import statement.
+
+```go
+package main
+
+import (
+	"fmt"
+	"math"
+)
+
+func main() {
+	fmt.Printf("Now you have %g problems.\n", math.Sqrt(7))
+}
+```
