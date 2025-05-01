@@ -673,3 +673,10 @@ func main() {
 	fmt.Println("done")
 }
 ```
+
+### Structs, slices and maps
+
+#### Pointers
+
+A pointer holds the memory address of a value.
+The type *T is a pointer to a T value. Its zero value is nil.
