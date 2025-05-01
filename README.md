@@ -286,4 +286,102 @@ func main() {
 }
 ```
 
-### 
+### Zero values
+
+Variables declared without an explicit initial value are given their zero value.
+
+The zero value is:
+- 0 for numeric types,
+- false for the boolean type, and
+- "" (the empty string) for strings.
+
+```go
+package main
+
+import "fmt"
+
+func main() {
+	var i int
+	var f float64
+	var b bool
+	var s string
+	fmt.Printf("%v %v %v %q\n", i, f, b, s)
+}
+```
+
+### Type conversions
+
+The expression T(v) converts the value v to the type T.
+Unlike in C, in Go assignment between items of different type requires an explicit conversion. 
+
+```go
+package main
+
+import (
+	"fmt"
+	"math"
+)
+
+func main() {
+	var x, y int = 3, 4
+	var f float64 = math.Sqrt(float64(x*x + y*y))
+	var z uint = uint(f)
+	fmt.Println(x, y, z)
+}
+```
+
+### Constants
+
+Constants are declared like variables, but with the *const* keyword.
+- can be character, string, boolean, or numeric values.
+- cannot be declared using the := syntax.
+
+```go
+package main
+
+import "fmt"
+
+const Pi = 3.14
+
+func main() {
+	const World = "世界"
+	fmt.Println("Hello", World)
+	fmt.Println("Happy", Pi, "Day")
+
+	const Truth = true
+	fmt.Println("Go rules?", Truth)
+}
+```
+
+### Numeric Constants
+
+Numeric constants are high-precision values.
+An untyped constant takes the type needed by its context.
+
+```go
+package main
+
+import "fmt"
+
+const (
+	// Create a huge number by shifting a 1 bit left 100 places.
+	// In other words, the binary number that is 1 followed by 100 zeroes.
+	Big = 1 << 100
+	// Shift it right again 99 places, so we end up with 1<<1, or 2.
+	Small = Big >> 99
+)
+
+func needInt(x int) int { 
+    return x*10 + 1 
+}
+
+func needFloat(x float64) float64 {
+	return x * 0.1
+}
+
+func main() {
+	fmt.Println(needInt(Small))
+	fmt.Println(needFloat(Small))
+	fmt.Println(needFloat(Big))
+}
+```
