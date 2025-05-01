@@ -51,7 +51,7 @@ func main() {
 
 ## Basics
 
-### Packages
+### Packages, variables and functions
 
 Every Go program is made up of packages: programs start running in package main.
 This program is using the packages with import paths *fmt* and *math/rand"*.
@@ -71,7 +71,7 @@ func main() {
 }
 ```
 
-### Imports
+#### Imports
 
 This code groups the imports into a parenthesized, *factored* import statement.
 
@@ -88,7 +88,7 @@ func main() {
 }
 ```
 
-### Exported names
+#### Exported names
 
 In Go, a name is exported if it begins with a capital letter: *Pi* is an exported name; *pi* does not start with a capital letter, so it is not exported.
 
@@ -108,7 +108,7 @@ func main() {
 }
 ```
 
-### Functions
+#### Functions
 
 A function can take zero or more arguments.
 In this example, add takes two parameters of type int.
@@ -130,7 +130,7 @@ func main() {
 }
 ```
 
-### Functions continued
+#### Functions continued
 
 When two or more consecutive named function parameters share a type, you can omit the type from all but the last.
 
@@ -148,7 +148,7 @@ func main() {
 }
 ```
 
-### Multiple results
+#### Multiple results
 
 A function can return any number of results.
 
@@ -167,7 +167,7 @@ func main() {
 }
 ```
 
-### Named return values
+#### Named return values
 
 Go's return values may be named. If so, they are treated as variables defined at the top of the function.
 These names should be used to document the meaning of the return values.
@@ -191,7 +191,7 @@ func main() {
 }
 ```
 
-### Variables
+#### Variables
 
 The *var* statement declares a list of variables; as in function argument lists, the type is last.
 A var statement can be at package or function level.
@@ -209,7 +209,7 @@ func main() {
 }
 ```
 
-### Variables with initializers
+#### Variables with initializers
 
 A var declaration can include initializers, one per variable.
 If an initializer is present, the type can be omitted; the variable will take the type of the initializer.
@@ -227,7 +227,7 @@ func main() {
 }
 ```
 
-### Short variable declarations
+#### Short variable declarations
 
 Inside a function, the *:=* short assignment statement can be used in place of a *var* declaration with implicit type.
 
@@ -247,7 +247,7 @@ func main() {
 }
 ```
 
-### Basic types
+#### Basic types
 
 Go's basic types are
 - bool
@@ -286,7 +286,7 @@ func main() {
 }
 ```
 
-### Zero values
+#### Zero values
 
 Variables declared without an explicit initial value are given their zero value.
 
@@ -309,7 +309,7 @@ func main() {
 }
 ```
 
-### Type conversions
+#### Type conversions
 
 The expression T(v) converts the value v to the type T.
 Unlike in C, in Go assignment between items of different type requires an explicit conversion. 
@@ -330,7 +330,7 @@ func main() {
 }
 ```
 
-### Constants
+#### Constants
 
 Constants are declared like variables, but with the *const* keyword.
 - can be character, string, boolean, or numeric values.
@@ -353,7 +353,7 @@ func main() {
 }
 ```
 
-### Numeric Constants
+#### Numeric Constants
 
 Numeric constants are high-precision values.
 An untyped constant takes the type needed by its context.
@@ -383,5 +383,51 @@ func main() {
 	fmt.Println(needInt(Small))
 	fmt.Println(needFloat(Small))
 	fmt.Println(needFloat(Big))
+}
+```
+
+### Flow control statements (for, if, switch, defer)
+
+#### For
+
+Go has only one looping construct, the for loop.
+
+The basic for loop has three components separated by semicolons:
+- the init statement: executed before the first iteration
+- the condition expression: evaluated before every iteration
+- the post statement: executed at the end of every iteration
+
+The init statement will often be a short variable declaration, and the variables declared there are visible only in the scope of the for statement.
+The loop will stop iterating once the boolean condition evaluates to false.
+
+```go
+package main
+
+import "fmt"
+
+func main() {
+	sum := 0
+	for i := 0; i < 10; i++ {
+		sum += i
+	}
+	fmt.Println(sum)
+}
+```
+
+#### For continued
+
+The init and post statements are optional.
+
+```go
+package main
+
+import "fmt"
+
+func main() {
+	sum := 1
+	for ; sum < 1000; {
+		sum += sum
+	}
+	fmt.Println(sum)
 }
 ```
