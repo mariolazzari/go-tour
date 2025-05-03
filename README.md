@@ -771,3 +771,48 @@ func main() {
 A struct literal denotes a newly allocated struct value by listing the values of its fields.
 You can list just a subset of fields by using the Name: syntax. (And the order of named fields is irrelevant.)
 The special prefix *&* returns a pointer to the struct value.
+
+```go
+package main
+
+import "fmt"
+
+type Vertex struct {
+	X, Y int
+}
+
+var (
+	v1 = Vertex{1, 2}  // has type Vertex
+	v2 = Vertex{X: 1}  // Y:0 is implicit
+	v3 = Vertex{}      // X:0 and Y:0
+	p  = &Vertex{1, 2} // has type *Vertex
+)
+
+func main() {
+	fmt.Println(v1, p, v2, v3)
+}
+```
+
+#### Arrays
+The type [n]T is an array of n values of type T.
+
+The expression ```go var a [10]int``` declares a variable a as an array of ten integers.
+An array's length is part of its type, so arrays *cannot be resized*. 
+This seems limiting, but don't worry; Go provides a convenient way of working with arrays.
+
+```go
+package main
+
+import "fmt"
+
+func main() {
+	var a [2]string
+	a[0] = "Hello"
+	a[1] = "World"
+	fmt.Println(a[0], a[1])
+	fmt.Println(a)
+
+	primes := [6]int{2, 3, 5, 7, 11, 13}
+	fmt.Println(primes)
+}
+```
