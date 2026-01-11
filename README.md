@@ -19,7 +19,7 @@ func main() {
 }
 ```
 
-```sh 
+```sh
 go run hello.go
 ```
 
@@ -30,8 +30,9 @@ Go [playground](https://go.dev/play/)
 The service receives a Go program, compiles, links, and runs the program inside a sandbox, then returns the output.
 
 There are limitations to the programs that can be run in the playground:
+
 - In the playground the time begins at 2009-11-10 23:00:00 UTC (determining the significance of this date is an exercise for the reader). This makes it easier to cache programs by giving them deterministic output.
-There are also limits on execution time and on CPU and memory usage, and the program cannot access external network hosts.
+  There are also limits on execution time and on CPU and memory usage, and the program cannot access external network hosts.
 - The playground uses the latest stable release of Go.
 
 ```go
@@ -54,9 +55,9 @@ func main() {
 ### Packages, variables and functions
 
 Every Go program is made up of packages: programs start running in package main.
-This program is using the packages with import paths *fmt* and *math/rand"*.
+This program is using the packages with import paths _fmt_ and _math/rand"_.
 
-By convention, the package name is the same as the last element of the import path: the *math/rand* package comprises files that begin with the statement package *rand*.
+By convention, the package name is the same as the last element of the import path: the _math/rand_ package comprises files that begin with the statement package _rand_.
 
 ```go
 package main
@@ -73,7 +74,7 @@ func main() {
 
 #### Imports
 
-This code groups the imports into a parenthesized, *factored* import statement.
+This code groups the imports into a parenthesized, _factored_ import statement.
 
 ```go
 package main
@@ -90,7 +91,7 @@ func main() {
 
 #### Exported names
 
-In Go, a name is exported if it begins with a capital letter: *Pi* is an exported name; *pi* does not start with a capital letter, so it is not exported.
+In Go, a name is exported if it begins with a capital letter: _Pi_ is an exported name; _pi_ does not start with a capital letter, so it is not exported.
 
 When importing a package, you can refer only to its exported names. Any "unexported" names are not accessible from outside the package.
 
@@ -193,7 +194,7 @@ func main() {
 
 #### Variables
 
-The *var* statement declares a list of variables; as in function argument lists, the type is last.
+The _var_ statement declares a list of variables; as in function argument lists, the type is last.
 A var statement can be at package or function level.
 
 ```go
@@ -229,7 +230,7 @@ func main() {
 
 #### Short variable declarations
 
-Inside a function, the *:=* short assignment statement can be used in place of a *var* declaration with implicit type.
+Inside a function, the _:=_ short assignment statement can be used in place of a _var_ declaration with implicit type.
 
 Outside a function, every statement begins with a keyword (var, func, and so on) and so the := construct is not available.
 
@@ -250,18 +251,18 @@ func main() {
 #### Basic types
 
 Go's basic types are
+
 - bool
 - string
-- int  int8  int16  int32  int64
+- int int8 int16 int32 int64
 - uint uint8 uint16 uint32 uint64 uintptr
 - byte (alias for uint8)
 - rune (alias for int32): represents a Unicode code point
-- float32 
+- float32
 - float64
-- complex64 
+- complex64
 - complex128
-- 
-The example shows variables of several types, and also that variable declarations may be "factored" into blocks, as with import statements.
+- The example shows variables of several types, and also that variable declarations may be "factored" into blocks, as with import statements.
 
 The int, uint, and uintptr types are usually 32 bits wide on 32-bit systems and 64 bits wide on 64-bit systems. When you need an integer value you should use int unless you have a specific reason to use a sized or unsigned integer type.
 
@@ -291,6 +292,7 @@ func main() {
 Variables declared without an explicit initial value are given their zero value.
 
 The zero value is:
+
 - 0 for numeric types,
 - false for the boolean type, and
 - "" (the empty string) for strings.
@@ -312,7 +314,7 @@ func main() {
 #### Type conversions
 
 The expression T(v) converts the value v to the type T.
-Unlike in C, in Go assignment between items of different type requires an explicit conversion. 
+Unlike in C, in Go assignment between items of different type requires an explicit conversion.
 
 ```go
 package main
@@ -332,7 +334,8 @@ func main() {
 
 #### Constants
 
-Constants are declared like variables, but with the *const* keyword.
+Constants are declared like variables, but with the _const_ keyword.
+
 - can be character, string, boolean, or numeric values.
 - cannot be declared using the := syntax.
 
@@ -371,8 +374,8 @@ const (
 	Small = Big >> 99
 )
 
-func needInt(x int) int { 
-    return x*10 + 1 
+func needInt(x int) int {
+    return x*10 + 1
 }
 
 func needFloat(x float64) float64 {
@@ -393,6 +396,7 @@ func main() {
 Go has only one looping construct, the for loop.
 
 The basic for loop has three components separated by semicolons:
+
 - the init statement: executed before the first iteration
 - the condition expression: evaluated before every iteration
 - the post statement: executed at the end of every iteration
@@ -556,7 +560,7 @@ Repeating this adjustment makes the guess better and better until we reach an an
 
 #### Switch
 
-A *switch* statement is a shorter way to write a sequence of *if - else* statements. 
+A _switch_ statement is a shorter way to write a sequence of _if - else_ statements.
 It runs the first case whose value is equal to the condition expression.
 
 ```go
@@ -638,7 +642,7 @@ func main() {
 
 #### Defer
 
-A *defer* statement defers the execution of a function until the surrounding function returns.
+A _defer_ statement defers the execution of a function until the surrounding function returns.
 
 The deferred call's arguments are evaluated immediately, but the function call is not executed until the surrounding function returns.
 
@@ -679,7 +683,7 @@ func main() {
 #### Pointers
 
 A pointer holds the memory address of a value.
-The type *T is a pointer to a T value. 
+The type \*T is a pointer to a T value.
 Its zero value is nil.
 
 ```go
@@ -745,7 +749,7 @@ func main() {
 
 Struct fields can be accessed through a struct pointer.
 
-To access the field X of a struct when we have the struct pointer p we could write (*p).X. 
+To access the field X of a struct when we have the struct pointer p we could write (\*p).X.
 However, that notation is cumbersome, so the language permits us instead to write just p.X, without the explicit dereference.
 
 ```go
@@ -770,7 +774,7 @@ func main() {
 
 A struct literal denotes a newly allocated struct value by listing the values of its fields.
 You can list just a subset of fields by using the Name: syntax. (And the order of named fields is irrelevant.)
-The special prefix *&* returns a pointer to the struct value.
+The special prefix _&_ returns a pointer to the struct value.
 
 ```go
 package main
@@ -794,10 +798,11 @@ func main() {
 ```
 
 #### Arrays
+
 The type [n]T is an array of n values of type T.
 
-The expression ```go var a [10]int``` declares a variable a as an array of ten integers.
-An array's length is part of its type, so arrays *cannot be resized*. 
+The expression `go var a [10]int` declares a variable a as an array of ten integers.
+An array's length is part of its type, so arrays _cannot be resized_.
 This seems limiting, but don't worry; Go provides a convenient way of working with arrays.
 
 ```go
@@ -818,11 +823,12 @@ func main() {
 ```
 
 #### Slices
+
 An array has a fixed size. A slice, on the other hand, is a dynamically-sized, flexible view into the elements of an array. In practice, slices are much more common than arrays.
 The type []T is a slice with elements of type T.
-A slice is formed by specifying two indices, a low and high bound, separated by a colon: *a[low : high]*
+A slice is formed by specifying two indices, a low and high bound, separated by a colon: _a[low : high]_
 This selects a half-open range which includes the first element, but excludes the last one.
-The following expression creates a slice which includes elements 1 through 3 of a: ```go a[1:4] ```
+The following expression creates a slice which includes elements 1 through 3 of a: `go a[1:4] `
 
 ```go
 package main
@@ -871,8 +877,8 @@ func main() {
 
 A slice literal is like an array literal without the length.
 
-This is an array literal: ```go [3]bool{true, true, false}```
-And this creates the same array as above, then builds a slice that references it: ```go []bool{true, true, false}```
+This is an array literal: `go [3]bool{true, true, false}`
+And this creates the same array as above, then builds a slice that references it: `go []bool{true, true, false}`
 
 ```go
 package main
@@ -902,6 +908,7 @@ func main() {
 ```
 
 #### Slice defaults
+
 When slicing, you may omit the high or low bounds to use their defaults instead.
 The default is zero for the low bound and the length of the slice for the high bound.
 For the array
